@@ -31,9 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HC.Shared.Domain", "HC.Shar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{BF14A347-1463-4363-AA46-44417953B181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HC.Presentation.API", "HC.Presentation.API\HC.Presentation.API.csproj", "{5FE04FED-C394-483D-90DF-9214252D4D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HC.Presentation.API", "HC.Presentation.API\HC.Presentation.API.csproj", "{5FE04FED-C394-483D-90DF-9214252D4D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HC.Presentation.API.Application", "HC.Presentation.API.Application\HC.Presentation.API.Application.csproj", "{804D692F-D551-47F4-BB0E-04CBECFCDE7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HC.Presentation.API.Application", "HC.Presentation.API.Application\HC.Presentation.API.Application.csproj", "{804D692F-D551-47F4-BB0E-04CBECFCDE7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQ", "RabbitMQ", "{ED51D97F-590B-4F17-A11B-D9A95A5BC03A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HC.RabbitMQ.Listener.API", "HC.RabbitMQ.Listener.API\HC.RabbitMQ.Listener.API.csproj", "{16785ECC-4D3E-4ECC-AFD5-3BDF3A0139AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,10 @@ Global
 		{804D692F-D551-47F4-BB0E-04CBECFCDE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{804D692F-D551-47F4-BB0E-04CBECFCDE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{804D692F-D551-47F4-BB0E-04CBECFCDE7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16785ECC-4D3E-4ECC-AFD5-3BDF3A0139AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16785ECC-4D3E-4ECC-AFD5-3BDF3A0139AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16785ECC-4D3E-4ECC-AFD5-3BDF3A0139AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16785ECC-4D3E-4ECC-AFD5-3BDF3A0139AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +97,8 @@ Global
 		{BF14A347-1463-4363-AA46-44417953B181} = {40E5B37F-375C-4660-8AE2-E291659C68A6}
 		{5FE04FED-C394-483D-90DF-9214252D4D84} = {BF14A347-1463-4363-AA46-44417953B181}
 		{804D692F-D551-47F4-BB0E-04CBECFCDE7D} = {CA693059-64BC-4878-8F8C-A00F14BBC6DF}
+		{ED51D97F-590B-4F17-A11B-D9A95A5BC03A} = {40E5B37F-375C-4660-8AE2-E291659C68A6}
+		{16785ECC-4D3E-4ECC-AFD5-3BDF3A0139AE} = {ED51D97F-590B-4F17-A11B-D9A95A5BC03A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1F25394-1BBB-43F6-A055-EBB49FD5767B}
