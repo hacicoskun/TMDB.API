@@ -24,6 +24,17 @@ namespace HC.Presentation.API.Application.DTOs
         public string note { get; set; }
         public int score { get; set; }
     }
-
-   
+    public class MovieAndCommentsDTO
+    {
+        public MovieDTO movie { get; set; }
+        public List<NoteAndScores> note_and_scores { get; set; } = new List<NoteAndScores>();
+        public double average_score { get; set; }
+        public string response { get; set; }
+        public string response_code { get; set; }
+    }
+    public class NoteAndScores
+    {
+        public string note { get; set; }
+        public int score { get; set; }
+    }
 }
