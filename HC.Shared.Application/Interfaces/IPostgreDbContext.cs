@@ -15,5 +15,6 @@ namespace HC.Shared.Application.Interfaces
     public interface IPostgreDbContext : IDbContextBase
     {
         DbSet<Movie> Movies { get; set; }
+        DbSet<MovieComments> MovieComments { get; set; }
     }
 }

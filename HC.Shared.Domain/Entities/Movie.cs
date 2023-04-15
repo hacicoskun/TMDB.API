@@ -26,6 +26,7 @@ namespace HC.Shared.Domain.Entities
         public double vote_average { get; set; }  
         public int vote_count { get; set; } 
         public string note { get; set; } 
-        public int score { get; set; } 
+        public int score { get; set; }
+        public string UserId { get; set; } 
     }
 }

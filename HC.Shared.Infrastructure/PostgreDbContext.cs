@@ -27,10 +27,13 @@ namespace HC.Shared.Infrastructure
             modelBuilder.Entity<Movie>().Property(b => b.poster_path).IsRequired(false);
             modelBuilder.Entity<Movie>().Property(b => b.release_date).IsRequired(false);
             modelBuilder.Entity<Movie>().Property(b => b.title).IsRequired(false);  
+            modelBuilder.Entity<Movie>().Property(b => b.note).IsRequired(false);  
+            modelBuilder.Entity<MovieComments>().Property(b => b.note).IsRequired(false);  
              
 
         }
         public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<MovieComments> MovieComments { get; set; }
 
 
 
