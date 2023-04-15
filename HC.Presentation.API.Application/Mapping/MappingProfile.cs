@@ -9,6 +9,7 @@ namespace HC.Presentation.API.Application.Mapping
         public MappingProfile()
         {
             CreateMap<Movie, MovieDTO>().ReverseMap(); 
+            CreateMap<MovieComments, MovieCommentDTO>().ReverseMap(); 
         }
     }
 }

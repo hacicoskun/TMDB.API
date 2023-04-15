@@ -25,8 +25,8 @@ namespace HC.Presentation.API.Controllers
             return data;
         }
         [HttpPost]
-        [Route("GetById")]
-        public async Task<string> GetById(CreateMovieCommentCommand command)
+        [Route("AddMovieComment")]
+        public async Task<MovieCommentDTO> AddMovieComment(CreateMovieCommentCommand command)
         {
             var data = await _mediator.Send(command);
             return data;
