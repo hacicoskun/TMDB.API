@@ -25,5 +25,7 @@ namespace HC.Shared.Domain.Entities
         public bool video { get; set; }  
         public double vote_average { get; set; }  
         public int vote_count { get; set; } 
+        public string note { get; set; } 
+        public int score { get; set; } 
     }
 }
