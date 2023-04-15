@@ -3,6 +3,7 @@ using System;
 using HC.Shared.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HC.Shared.Infrastructure.Migrations
 {
     [DbContext(typeof(PostgreDbContext))]
-    partial class PostgreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230415133609_note_null_check")]
+    partial class note_null_check
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +32,6 @@ namespace HC.Shared.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("adult")
                         .HasColumnType("boolean");
@@ -85,32 +84,6 @@ namespace HC.Shared.Infrastructure.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("HC.Shared.Domain.Entities.MovieComments", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<int>("movie_id")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("note")
-                        .HasColumnType("text");
-
-                    b.Property<int>("score")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("user_id")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("MovieComments");
                 });
 #pragma warning restore 612, 618
         }
