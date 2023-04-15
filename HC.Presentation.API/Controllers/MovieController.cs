@@ -39,7 +39,7 @@ namespace HC.Presentation.API.Controllers
         [Route("AddMovieComment")]
         public async Task<MovieCommentDTO> AddMovieComment(AddMovieCommentRequestModel command)
         {
-             
+
             AddMovieCommentRequestValidator validator = new AddMovieCommentRequestValidator();
 
             ValidationResult v_result = validator.Validate(new AddMovieCommentRequestModel { Note = command.Note, Score = command.Score });
@@ -60,6 +60,18 @@ namespace HC.Presentation.API.Controllers
 
 
             var data = await _mediator.Send(new CreateMovieCommentCommand { MovieId = command.MovieId, Note = command.Note, Score = command.Score, UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
+
+            return data;
+        }
+
+
+        [HttpPost]
+        [Route("FindMovie")]
+        public async Task<MovieAndCommentsDTO> GetMovieById(GetMovieByIdRequestModel query)
+        {
+             
+
+            var data = await _mediator.Send(new GetMovieByIdQuery { Id = query.Id, UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
 
             return data;
         }
