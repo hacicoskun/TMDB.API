@@ -17,7 +17,7 @@ namespace HC.Presentation.API.Application.Features.MovieFeature.Command
     {
         public int MovieId { get; set; }
         public int Score { get; set; }
-        public string Note { get; set; }
+        public string Note { get; set; } 
         public string UserId { get; set; }
         public class CreateMovieCommentCommandHandler : IRequestHandler<CreateMovieCommentCommand, MovieCommentDTO>
         {
