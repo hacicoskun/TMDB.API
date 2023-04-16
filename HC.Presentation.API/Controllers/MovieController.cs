@@ -1,14 +1,13 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using HC.Api.Identity.Identity;
+﻿using FluentValidation.Results;
 using HC.Presentation.API.Application.DTOs;
 using HC.Presentation.API.Application.Features.MovieFeature.Command;
 using HC.Presentation.API.Application.Features.MovieFeature.Query;
 using HC.Presentation.API.Models;
 using HC.Presentation.API.Validation.Movie;
+using HC.Shared;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -22,19 +21,22 @@ namespace HC.Presentation.API.Controllers
     public class MovieController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ISendEndpointProvider _sendEndpointProvider;
 
-        public MovieController(IMediator mediator)
+        public MovieController(IMediator mediator, ISendEndpointProvider sendEndpointProvider)
         {
             _mediator = mediator;
-
+            this._sendEndpointProvider = sendEndpointProvider;
         }
-        [HttpPost]
+
+        [HttpGet]
         [Route("GetList")]
         public async Task<List<MovieDTO>> MovieList(GetMovieListByPageNumberQuery request)
         {
             var data = await _mediator.Send(request);
             return data;
         }
+
         [HttpPost]
         [Route("AddMovieComment")]
         public async Task<MovieCommentDTO> AddMovieComment(AddMovieCommentRequestModel command)
@@ -69,11 +71,26 @@ namespace HC.Presentation.API.Controllers
         [Route("FindMovie")]
         public async Task<MovieAndCommentsDTO> GetMovieById(GetMovieByIdRequestModel query)
         {
-             
-
             var data = await _mediator.Send(new GetMovieByIdQuery { Id = query.Id, UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
 
             return data;
+        }
+
+        [HttpPost]
+        [Route("SendMail")]
+        public async Task<ResponseModel> SuggestMoviesByEmail(SuggestMoviesByEmailRequestModel request)
+        {
+            var data = await _mediator.Send(new GetMovieByIdQuery { Id = request.movie_id, UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) });
+
+            if (data is not null)
+            {
+                var send = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:create-email-request-by-rabbitmq"));
+                var item = new CreateRecommendMovieWithEmail { Email = request.email ,Body= "HC.RabbitMQListener Test  Lorem Ipsum is simply dummy text of the printing and typesetting industry.",Title= "RabbitMQ-Masstransit HC.RabbitMQListener" };
+                await send.Send<CreateRecommendMovieWithEmail>(item);
+                return new ResponseModel { response = data.movie.title + " isimli film önerisi " + request.email + " adresine gönderildi." ,response_code= "200" };
+            }
+            return new ResponseModel { response = "", response_code = "500" };
+
         }
     }
 }
