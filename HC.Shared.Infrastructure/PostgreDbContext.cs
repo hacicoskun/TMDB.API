@@ -28,7 +28,9 @@ namespace HC.Shared.Infrastructure
             modelBuilder.Entity<Movie>().Property(b => b.release_date).IsRequired(false);
             modelBuilder.Entity<Movie>().Property(b => b.title).IsRequired(false);  
             modelBuilder.Entity<Movie>().Property(b => b.note).IsRequired(false);  
+            modelBuilder.Entity<Movie>().Property(b => b.UserId).IsRequired(false);  
             modelBuilder.Entity<MovieComments>().Property(b => b.note).IsRequired(false);  
+            modelBuilder.Entity<MovieComments>().Property(b => b.user_id).IsRequired(false);  
              
 
         }
