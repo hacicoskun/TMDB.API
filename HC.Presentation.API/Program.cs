@@ -3,6 +3,7 @@ using HC.Api.Identity.Extensions;
 using HC.Api.Identity.Identity;
 using HC.Presentation.API.Application.Mapping;
 using HC.Shared.Infrastructure;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,19 @@ builder.Services.AddDefaultIdentity<ApiIdentityUser>().AddEntityFrameworkStores<
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddMassTransit(x => {
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
+        {
+            host.Username("guest");
+            host.Password("guest");
+        });
+    });
+});
+
+builder.Services.AddMassTransitHostedService();
 
 builder.Services.AddSwaggerGen(swagger =>
 {
