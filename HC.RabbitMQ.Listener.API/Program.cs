@@ -1,5 +1,7 @@
 using HC.Shared;
+using HC.Shared.Application.Services;
 using MassTransit;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(builder.Configuration["RedisConnection"]));
+builder.Services.AddSingleton<IRedisClient, RedisClient>();
 
 
 var app = builder.Build();
