@@ -1,4 +1,4 @@
- 
+Asp.Net Core üzerinde Onion Mimarisi
 Web API\
 Hangfire Recurring job\
 RabbitMQ\
