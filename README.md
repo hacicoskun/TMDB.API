@@ -1,5 +1,14 @@
-# 💫 About Me:
-Hello, after graduating from the computer programming department in 2013, I worked as a software development specialist in companies in the e-commerce and iot sector.<br><br>Some details about the projects I have developed;<br>Title: Full Stack Developer<br>Framework Lib's: C#.NET Core 3.1+ and .Net Framework 4.0+<br>Databases: MSSQL, PostgreSQL, Redis,MongoDB and (ElasticSearch)<br>Communication Protocol:  .NET API , SOAP ,WCF<br>Architecture : Microservice ,Onion,N-Tier,Clean,DDD<br>Design Patterns: Mediatr,CQRS,Repository and UnitOfWork,SAGA,NET MVC<br>Gateway:Ocelot<br>Auth : Identity Server 4 <br>Que : RabbitMQ ,Masstransit , SignalR and Hangfire <br>Front End : Bootstrap 3+,Jquery libraries.JavaScript,Vue.js and Angular 14+<br>Project Management: Jira, Github,Agile Scrum and Canban<br>Source Controls: TFS,Github,Gitlab,Jenkins
+# 💫 Project Details:
+Asp.Net Core üzerinde Onion Mimarisi
+Web API\
+Hangfire Recurring job\
+RabbitMQ\
+Masstransit\
+Redis\
+PostgreSQL\
+Identity - Bearer\
+Option Pattern\
+Entityframework
 
 
 ## 🌐 Socials:
